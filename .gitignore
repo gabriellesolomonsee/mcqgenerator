@@ -1,0 +1,4 @@
+node_module
+# data folder
+# .DS_store
+# .env environment file which store secret passwords
