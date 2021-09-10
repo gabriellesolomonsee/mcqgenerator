@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 const homepageController = require("./controllers/homepageController");
-const papersController = require("./controllers/papersController");
+const postsController = require("./controllers/postsController");
 const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
@@ -28,7 +28,7 @@ app.use(methodOverride("_method"));
 
 app.use(homepageController);
 app.use("/users", userController);
-app.use("/papers", papersController);
+app.use("/posts", postsController);
 app.use("/testing", testingController);
 
 const server = app.listen(3000);

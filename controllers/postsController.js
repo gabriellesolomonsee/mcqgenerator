@@ -1,5 +1,5 @@
 const express = require("express");
-const papersModel = require("../models/papers");
+const postsModel = require("../models/posts");
 const controller = express.Router();
 
 // multer is a middleware to handle file uploads automatically
@@ -29,15 +29,15 @@ controller.get("/new", (req, res) => {
 
 controller.get("/:id", async (req, res) => {
   // get the single post by post id
-  const selectedPaper = await papersModel.findById(req.params.id);
+  const selectedPost = await postsModel.findById(req.params.id);
 
   // same as homepage, we display alert banners
   // if there are success and action query parameters
   // if not, don't display anything
   const success = req.query.success;
   const action = req.query.action;
-  res.render("papers/show.ejs", {
-    paper: selectedPaper,
+  res.render("posts/show.ejs", {
+    post: selectedPost,
     success,
     action
   });
@@ -52,16 +52,16 @@ controller.post("/", async (req, res) => {
     publishedDate: new Date(req.body.publishedDate),
     content: req.body.content
   }
-  await papersModel.create(inputs);
+  await postsModel.create(inputs);
 
   // Redirect user to the home page and provide the query parameters success and action
   res.redirect("/?success=true&action=create");
 });
 
 controller.get("/:id/edit", async (req, res) => {
-  const selectedPaper = await papersModel.findById(req.params.id);
+  const selectedPost = await postsModel.findById(req.params.id);
   res.render('posts/edit.ejs', {
-    paper: selectedPaper,
+    post: selectedPost,
   });
 });
 
@@ -73,7 +73,7 @@ controller.put("/:id", async (req, res) => {
     publishedDate: new Date(req.body.publishedDate),
     content: req.body.content
   }
-  await papersModel.updateOne({
+  await postsModel.updateOne({
     _id: req.params.id,
   }, inputs);
 
@@ -82,7 +82,7 @@ controller.put("/:id", async (req, res) => {
 });
 
 controller.delete("/:id", async (req, res) => {
-  await papersModel.deleteOne({
+  await postsModel.deleteOne({
     _id: req.params.id
   });
 
