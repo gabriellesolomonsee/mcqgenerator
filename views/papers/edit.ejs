@@ -1,12 +1,12 @@
 <%- include("../partials/header.ejs") %>
 <!-- just declaring a ISO string variable for later use, no output -->
-<% const postISOString = new Date(post.publishedDate).toISOString() %>
+<% const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
-  <h2>Edit post</h2>
-  <form method="POST" action="/posts/<%= post.id %>?_method=PUT" enctype="multipart/form-data">
+  <h2>Edit paper</h2>
+  <form method="POST" action="/papers/<%= paper.id %>?_method=PUT" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="headline" class="form-label">Headline:</label>
-      <input type="text" name="headline" class="form-control" value="<%= post.headline %>" />
+      <input type="text" name="headline" class="form-control" value="<%= paper.headline %>" />
     </div>
     <div class="mb-3">
       <label for="featuredImage" class="form-label">Featured Image:</label>
@@ -29,9 +29,9 @@
       <input type="submit" class="btn btn-primary mb-3" value="Save post" />
     </div>
   </form>
-  <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+  <form method="POST" action="/papers/<%= paper.id %>?_method=DELETE">
     <div>
-      <input type="submit" class="btn btn-danger mb-3" value="Delete post" />
+      <input type="submit" class="btn btn-danger mb-3" value="Delete paper" />
     </div>
   </form>
 </div>

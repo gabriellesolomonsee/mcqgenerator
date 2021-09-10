@@ -1,10 +1,10 @@
 const express = require("express");
-const postsModel = require("../models/posts");
+const papersModel = require("../models/papers");
 const controller = express.Router();
 
 // For testing purposes, do not expose this in production
 controller.get("/seeds", async (req, res) => {
-  await postsModel.insertMany([
+  await papersModel.insertMany([
     {
       headline: "Thursday is a fine day",
       author: "Zhiquan",
