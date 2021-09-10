@@ -8,7 +8,17 @@ const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
 // set up database connection
-const mongoURI = "mongodb://localhost:27017/mcqgeneratordb" 
+
+// const { MongoClient } = require('mongodb');
+// const uri = "mongodb+srv://gabrielle_admin:fmvfWnMRJvFPRD1N@gabriellemongodb.54lyg.mongodb.net/mcqgenerator?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+const mongoURI = "mongodb://localhost:27017/mcqgenerator" 
 const dbConnection = mongoose.connection;
 
 mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
