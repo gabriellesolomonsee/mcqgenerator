@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -9,7 +8,7 @@ const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
 // set up database connection
-const mongoURI = process.env.MONGO_URL
+const mongoURI = "mongodb://localhost:27017/simpleblogdb"
 const dbConnection = mongoose.connection;
 
 mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -32,7 +31,7 @@ app.use("/users", userController);
 app.use("/papers", papersController);
 app.use("/testing", testingController);
 
-const server = app.listen(process.env.PORT);
+const server = app.listen(3000);
 
 process.on("SIGTERM", () => {
   console.log("My process is exiting");
