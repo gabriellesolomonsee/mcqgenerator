@@ -25,7 +25,7 @@ app.use(methodOverride("_method"));
 
 app.use(homepageController);
 app.use("/users", userController);
-app.use("/papers", postsController);
+app.use("/papers", papersController);
 app.use("/testing", testingController);
 
 const server = app.listen(3000);
