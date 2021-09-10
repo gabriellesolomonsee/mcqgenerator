@@ -1,12 +1,12 @@
 {
-  "name": "simple_blog",
+  "name": "mcqgenerator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Gabrielle Solomon See",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.1.0",

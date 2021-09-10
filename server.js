@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 const homepageController = require("./controllers/homepageController");
-const postsController = require("./controllers/postsController");
+const papersController = require("./controllers/papersController");
 const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
@@ -21,14 +21,11 @@ const app = express();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }))
-// POST http://localhost:3000/posts/1?_method=PUT -> PUT http://localhost:3000/posts/1
-// POST http://localhost:3000/posts/1?_method=DELETE -> DELETE http://localhost:3000/posts/1
-// this middleware is used to enable HTML forms to submit PUT/DELETE requests
 app.use(methodOverride("_method"));
 
 app.use(homepageController);
 app.use("/users", userController);
-app.use("/posts", postsController);
+app.use("/papers", postsController);
 app.use("/testing", testingController);
 
 const server = app.listen(3000);

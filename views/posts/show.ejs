@@ -1,11 +1,11 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
   <%- include("../partials/alert.ejs") %>
-  <img src="../../<%= post.featuredImage %>" />
+  <img src="../../<%= paper.featuredImage %>" />
   <h3><%= post.headline %></h3>
-  <h6>By: <%= post.author %></h6>
-  <h6>Published on: <%= post.publishedDate %></h6>
-  <p><%= post.content %></p>
-  <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit post</a>
+  <h6>By: <%= paper.author %></h6>
+  <h6>Published on: <%= paper.publishedDate %></h6>
+  <p><%= paper.content %></p>
+  <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit paper</a>
 </div>
 <%- include("../partials/footer.ejs") %>

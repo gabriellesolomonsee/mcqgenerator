@@ -1,7 +1,7 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
-  <h2>Create a new post</h2>
-  <form method="POST" action="/posts" enctype="multipart/form-data">
+  <h2>Create a new paper</h2>
+  <form method="POST" action="/papers" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="headline" class="form-label">Headline:</label>
       <input type="text" name="headline" class="form-control" />
@@ -23,7 +23,7 @@
       <textarea name="content" class="form-control"></textarea>
     </div>
     <div>
-      <input type="submit" class="btn btn-primary mb-3" value="Create new post" />
+      <input type="submit" class="btn btn-primary mb-3" value="Create new paper" />
     </div>
   </form>
 </div>

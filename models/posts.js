@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const postSchema = new Schema(
+const paperSchema = new Schema(
   {
     headline: { type: String, required: true },
     author: { type: String, required: true },
@@ -14,6 +14,6 @@ const postSchema = new Schema(
   }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const Paper = mongoose.model("Paper", paperSchema);
 
-module.exports = Post;
+module.exports = Paper;
