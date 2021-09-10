@@ -8,7 +8,7 @@ const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
 // set up database connection
-const mongoURI = "mongodb://localhost:27017/simpleblogdb"
+const mongoURI = "mongodb://localhost:27017/mcqgeneratordb" 
 const dbConnection = mongoose.connection;
 
 mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
