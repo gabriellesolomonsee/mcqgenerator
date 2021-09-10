@@ -8,7 +8,6 @@ const postsController = require("./controllers/postsController");
 const testingController = require("./controllers/testingController");
 const userController = require("./controllers/userController");
 
-// set up database connection
 const mongoURI = process.env.MONGO_URL
 const dbConnection = mongoose.connection;
 
@@ -20,7 +19,7 @@ dbConnection.on("disconnected", () => console.log("My database is disconnected")
 
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static("public"));//read more on express.static
 app.use(express.urlencoded({ extended: true }))
 // POST http://localhost:3000/posts/1?_method=PUT -> PUT http://localhost:3000/posts/1
 // POST http://localhost:3000/posts/1?_method=DELETE -> DELETE http://localhost:3000/posts/1
@@ -32,7 +31,7 @@ app.use("/users", userController);
 app.use("/posts", postsController);
 app.use("/testing", testingController);
 
-const server = app.listen(process.env.PORT);
+const server = app.listen(process.env.PORT); //read more on env
 
 process.on("SIGTERM", () => {
   console.log("My process is exiting");
