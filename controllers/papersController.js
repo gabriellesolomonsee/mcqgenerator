@@ -21,7 +21,6 @@ controller.get("/:id", async (req, res) => { //getting a single post (REST)
 controller.post("/", async (req, res) => { //Creating a new paper and put it in the database (REST)
   const inputs = {
     title: req.body.title,
-    featuredImage: `images/${req.file.filename}`,
     author: req.body.author,
     publishedDate: new Date(req.body.publishedDate),
     topics: req.body.topics
