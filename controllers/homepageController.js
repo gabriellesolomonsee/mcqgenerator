@@ -2,7 +2,7 @@ const express = require("express");
 const papersModel = require("../models/papers");
 const controller = express.Router();
 
-controller.get("/", async (req, res) => {
+controller.get("", async (req, res) => {
   const papersSortedByRecentDate = await papersModel //sorting the papers according to the time they are created
     .find()
     .sort({ publishedDate: "desc" })

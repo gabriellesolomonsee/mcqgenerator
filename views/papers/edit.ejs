@@ -3,10 +3,10 @@
 <% const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
   <h2>Edit paper</h2>
-  <form method="POST" action="/papers/<%= papers.id %>?_method=PUT" enctype="multipart/form-data" >
+  <form method="POST" action="/papers/<%= paper.id %>?_method=PUT">
     <div class="mb-3">
       <!-- //to input the paper's title -->
-      <label for="title" class="form-label">Title:</label> //to input the paper's title
+      <label for="title" class="form-label">Title:</label> <!-- //to input the paper's title -->
       <input type="text" name="title" class="form-control" value="<%= paper.title %>" />
     </div>
     <div class="mb-3">
@@ -27,7 +27,7 @@
     </div>
     <div>
       <!-- //button to submit the info -->
-      <input type="submit" class="btn btn-primary mb-3" value="Save paper" />
+      <input type="submit" class="btn btn-primary mb-3" value="Save paper"/>
     </div>
   </form>
   <form method="POST" action="/papers/<%= paper.id %>?_method=DELETE">

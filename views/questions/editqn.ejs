@@ -1,5 +1,6 @@
 <%- include("../partials/header.ejs") %>
-<% const paperISOString = new Date(paper.publishedDate).toISOString() %>
+
+<%- const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
   <h2>Edit question</h2>
   <form method="POST" action="/questions/<%= questions.id %>?_method=PUT" enctype="multipart/form-data">

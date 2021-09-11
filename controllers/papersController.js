@@ -12,7 +12,7 @@ controller.get("/:id", async (req, res) => { //getting a single post (REST)
   const success = req.query.success; //alert
   const action = req.query.action;
   res.render("papers/show.ejs", {
-    paper: selectedPaper,
+    paper: selectedPapers,
     success,
     action
   });
@@ -26,7 +26,6 @@ controller.post("/", async (req, res) => { //Creating a new paper and put it in 
     topics: req.body.topics
   }
   await papersModel.create(inputs);
-
   res.redirect("/?success=true&action=create"); //Going back to the homepage
 });
 
@@ -39,20 +38,19 @@ controller.get("/:id/edit", async (req, res) => { //Edit the paper (REST)
 
 controller.put("/:id", async (req, res) => { //Updating the paper (REST)
   const inputs = {
-    headline: req.body.headline,
-    featuredImage: `images/${req.file.filename}`,
+    title: req.body.title,
     author: req.body.author,
     publishedDate: new Date(req.body.publishedDate),
-    content: req.body.content
+    topics: req.body.topics
   }
   await papersModel.updateOne({
     _id: req.params.id,
   }, inputs);
-
-  res.redirect(`/papers/${req.params.id}?success=true&action=update`); //bring user to one paper
+  // res.redirect("/?success=true&action=create");
+  res.redirect(`/papers/${req.params.id}?success=true&action=update`);
 });
 
-controller.delete("/:id", async (req, res) => { //deleting a paperr
+controller.delete("/:id", async (req, res) => { //deleting a paper
   await papersModel.deleteOne({
     _id: req.params.id
   });

@@ -1,6 +1,7 @@
 const express = require("express");
 const controller = express.Router();
 const multer = require("multer"); //Middleware to handle upload of pictures
+const questionsModel = require ("../models/questions")
 
 const diskStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -15,11 +16,11 @@ const uploadMiddleware = multer({ storage: diskStorage });
 
 controller.use(uploadMiddleware.single("questionImage"));
 
-controller.get("/questions/new", (req, res) => { //render the form for adding the new question
+controller.get("/newqn", (req, res) => { //render the form for adding the new question
   res.render("questions/newqn.ejs");
 });
 
-controller.get("/questions/:id", async (req, res) => { //Show one question
+controller.get("/:id", async (req, res) => { //Show one question
   const selectedQuestion = await questionsModel.findById(req.params.id);
   const success = req.query.success;
   const action = req.query.action;
@@ -30,10 +31,11 @@ controller.get("/questions/:id", async (req, res) => { //Show one question
   });
 });
 
-controller.post("/questions/", async (req, res) => { //creating a new question and put it in the database
+controller.post("", async (req, res) => { //creating a new question and put it in the database
+  // console.log(req.body)
   const inputs = {
     part1: req.body.part1,
-    questionImage: `images/${req.file.filename}`,
+    questionImage: req.file ? `images/${req.file.filename}` : '',
     part2: req.body.part2,
     optionA: req.body.optionA,
     optionB: req.body.optionB,
@@ -45,7 +47,7 @@ controller.post("/questions/", async (req, res) => { //creating a new question a
   res.redirect("/?success=true&action=create");
 });
 
-controller.get("/:id/edit", async (req, res) => { //Form to edit the question
+controller.get("/:id/editqn", async (req, res) => { //Form to edit the question
   const selectedQuestion = await questionsModel.findById(req.params.id);
   res.render('questions/editqn.ejs', {
     question: selectedQuestion,
@@ -74,12 +76,12 @@ controller.delete("/questions/:id", async (req, res) => { //Deleting a question
 });
 
 
-controller.get("/displayquestions", (req, res) => { //to display all the questions added
-  res.render("questions/displayquestions.ejs");
+controller.get("/:id/showquestions", (req, res) => { //to display all the questions added (REST: Index)
+  res.render("questions/showquestions.ejs");
 });
 
-controller.get("/displayanswers", (req, res) => { //to display all the answers
-  res.render("questions/displayanswers.ejs");
+controller.get("/:id/showanswers", (req, res) => { //to display all the answers
+  res.render("questions/showanswers.ejs");
 });
 
 module.exports = controller;

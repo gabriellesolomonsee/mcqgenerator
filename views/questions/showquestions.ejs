@@ -1,6 +1,6 @@
-<%- include("partials/header.ejs") %>
+<%- include("../partials/header.ejs") %>
   <div class="container">
-    <%- include("partials/alert.ejs") %>
+    <%- include("../partials/alert.ejs") %>
     <div class="col-12">
       <h2><%= paper.title %></h2>
       <% for (let i = 0; i < questions.length; i++ ) { %>
@@ -16,6 +16,6 @@
     </div>
     <a href="/questions/showanswers" class="btn btn-primary">Show answer</a>
   </div>
-<%- include("partials/footer.ejs") %>
+<%- include("../partials/footer.ejs") %>
 
 <!-- using a loop to display all the existing questions in the database -->

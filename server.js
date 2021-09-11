@@ -9,6 +9,8 @@ const papersController = require("./controllers/papersController");
 const testingController = require("./controllers/testingController");
 const questionController = require("./controllers/questionController");
 
+require('dotenv').config()
+
 // set up database connection
 
 //with Mongosh (as instructed in MongoDB Atlas website)
@@ -43,12 +45,13 @@ app.use(express.static("public")); //to serve static files such as img
 app.use(express.urlencoded({ extended: true })) //Returns middleware that only parses JSON and only looks at requests where the Content-Type header matches the type option
 app.use(methodOverride("_method"));
 
-app.use(homepageController);
+app.use("/", homepageController);
 app.use("/questions", questionController);
 app.use("/papers", papersController);
 app.use("/testing", testingController);
 
 const server = app.listen(process.env.PORT);
+// const server = app.listen(1234);
 
 process.on("SIGTERM", () => { //The SIGTERM signal is a generic signal used to cause program termination. Unlike SIGKILL , this signal can be blocked, handled, and ignored. It is the normal way to politely ask a program to terminate. 
   console.log("My process is exiting");
