@@ -48,7 +48,7 @@ app.use("/questions", questionController);
 app.use("/papers", papersController);
 app.use("/testing", testingController);
 
-const server = app.listen(3000);
+const server = app.listen(process.env.PORT);
 
 process.on("SIGTERM", () => { //The SIGTERM signal is a generic signal used to cause program termination. Unlike SIGKILL , this signal can be blocked, handled, and ignored. It is the normal way to politely ask a program to terminate. 
   console.log("My process is exiting");
