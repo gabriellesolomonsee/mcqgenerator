@@ -1,36 +1,38 @@
-<%- include("../partials/header.ejs") %>
-<!-- just declaring a ISO string variable for later use, no output -->
-<% const postISOString = new Date(post.publishedDate).toISOString() %>
+<%- include("../partials/header.ejs") %> 
+
+<% const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
   <h2>Edit paper</h2>
-  <form method="POST" action="/papers/<%= papers.id %>?_method=PUT" enctype="multipart/form-data">
+  <form method="POST" action="/papers/<%= papers.id %>?_method=PUT" enctype="multipart/form-data" >
     <div class="mb-3">
-      <label for="headline" class="form-label">Headline:</label>
-      <input type="text" name="headline" class="form-control" value="<%= paper.headline %>" />
+      <!-- //to input the paper's title -->
+      <label for="title" class="form-label">Title:</label> //to input the paper's title
+      <input type="text" name="title" class="form-control" value="<%= paper.title %>" />
     </div>
     <div class="mb-3">
-      <label for="featuredImage" class="form-label">Featured Image:</label>
-      <input type="file" name="featuredImage" class="form-control" accept="image/*"/>
-    </div>
-    <div class="mb-3">
+      <!-- //to input the paper's author -->
       <label for="author" class="form-label">Author:</label>
       <input type="text" name="author" class="form-control" value="<%= paper.author %>" />
     </div>
     <div class="mb-3">
+      <!-- //to input the date the paper is added -->
       <label for="publishedDate" class="form-label">Published Date:</label>
       <!-- Convert the publishedDate to the right format for the datetime-local input -->
       <input type="datetime-local" name="publishedDate" class="form-control" value="<%= paperISOString.substring(0, paperISOString.length - 1) %>" />
     </div>
     <div class="mb-3">
-      <label for="content" class="form-label">Content:</label>
-      <textarea name="content" class="form-control"><%= post.content %></textarea>
+      <!-- //to list all the topics tested -->
+      <label for="topics" class="form-label">Topics tested:</label>
+      <textarea name="topics" class="form-control"><%= paper.topics %></textarea>
     </div>
     <div>
+      <!-- //button to submit the info -->
       <input type="submit" class="btn btn-primary mb-3" value="Save paper" />
     </div>
   </form>
   <form method="POST" action="/papers/<%= paper.id %>?_method=DELETE">
     <div>
+      <!-- //button to delete the paper -->
       <input type="submit" class="btn btn-danger mb-3" value="Delete paper" />
     </div>
   </form>

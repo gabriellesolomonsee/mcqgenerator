@@ -3,12 +3,8 @@
   <h2>Create a new paper</h2>
   <form method="POST" action="/papers" enctype="multipart/form-data">
     <div class="mb-3">
-      <label for="headline" class="form-label">Headline:</label>
-      <input type="text" name="headline" class="form-control" />
-    </div>
-    <div class="mb-3">
-      <label for="featuredImage" class="form-label">Featured Image:</label>
-      <input type="file" name="featuredImage" class="form-control" accept="image/*"/>
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" name="title" class="form-control" />
     </div>
     <div class="mb-3">
       <label for="author" class="form-label">Author:</label>
@@ -19,8 +15,8 @@
       <input type="datetime-local" name="publishedDate" class="form-control" />
     </div>
     <div class="mb-3">
-      <label for="content" class="form-label">Content:</label>
-      <textarea name="content" class="form-control"></textarea>
+      <label for="topics" class="form-label">Topics tested:</label>
+      <textarea name="topics" class="form-control"></textarea>
     </div>
     <div>
       <input type="submit" class="btn btn-primary mb-3" value="Create new paper" />
@@ -28,3 +24,5 @@
   </form>
 </div>
 <%- include("../partials/footer.ejs") %>
+
+<!-- Similar to the views/edit except no preexisting values-->

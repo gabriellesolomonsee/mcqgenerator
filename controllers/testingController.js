@@ -2,29 +2,25 @@ const express = require("express");
 const papersModel = require("../models/papers");
 const controller = express.Router();
 
-// For testing purposes, do not expose this in production
 controller.get("/seeds", async (req, res) => {
   await papersModel.insertMany([
     {
-      headline: "Thursday is a fine day",
-      author: "Zhiquan",
+      title: "Class Test Term 1 2021 Biology Paper 1",
+      author: "Gabrielle",
       publishedDate: new Date("2021-08-12T06:01:28.695Z"),
-      featuredImage: "",
-      content: "The weather is sunny. The temperature is cool.",  
+      topics: "Cells, MOS, Nutrients",  
     },
     {
-      headline: "Friday is also a good day",
-      author: "Zhiquan",
-      publishedDate: new Date("2021-08-13T06:01:28.695Z"),
-      featuredImage: "",
-      content: "Rainy weather but good to sleep"
+      title: "MYE 2021 Biology Paper 1",
+      author: "Gabrielle",
+      publishedDate: new Date("2021-08-12T06:01:28.695Z"),
+      topics: "Cells, MOS, Nutrients, Plant Nutrition, Animal Nutrition, Plant Transport",  
     },
     {
-      headline: "Today is another good day",
-      author: "Zhiquan",
-      publishedDate: new Date(),
-      featuredImage: "",
-      content: "Seems fine"
+      title: "EYE 2021 Biology Paper 1",
+      author: "Gabrielle",
+      publishedDate: new Date("2021-08-12T06:01:28.695Z"),
+      topics: "All Sec 3 topics",
     }
   ]);
   res.send("Seed data completed");

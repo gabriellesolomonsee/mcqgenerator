@@ -2,39 +2,14 @@ const express = require("express");
 const papersModel = require("../models/papers");
 const controller = express.Router();
 
-// multer is a middleware to handle file uploads automatically
-const multer = require("multer");
-
-// it allows you to choose different storages (disk or memory). Disk is basically on your local harddrive.
-// It provides you a couple of functions, one is for choosing the destination, where you want to upload, the other one for defining the filename for the uploaded file
-const diskStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./public/images/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}_${file.originalname}`);
-  }
-})
-
-// after you setup multer to choose your disk storage, you can initialize a middleware to use for your routes
-const uploadMiddleware = multer({ storage: diskStorage });
-
-// in our case we are using multer in our all routes, this will automatically upload any file where the input name is featuredImage
-controller.use(uploadMiddleware.single("featuredImage"));
-
-controller.get("/new", (req, res) => {
-  // render the UI to create a new post
+controller.get("/new", (req, res) => { //UI to create a new paper (REST)
   res.render("papers/new.ejs");
 });
 
-controller.get("/:id", async (req, res) => {
-  // get the single post by post id
+controller.get("/:id", async (req, res) => { //getting a single post (REST)
   const selectedPapers = await papersModel.findById(req.params.id);
 
-  // same as homepage, we display alert banners
-  // if there are success and action query parameters
-  // if not, don't display anything
-  const success = req.query.success;
+  const success = req.query.success; //alert
   const action = req.query.action;
   res.render("papers/show.ejs", {
     paper: selectedPaper,
@@ -43,29 +18,27 @@ controller.get("/:id", async (req, res) => {
   });
 });
 
-// endpoint for creating new blog post
-controller.post("/", async (req, res) => {
+controller.post("/", async (req, res) => { //Creating a new paper and put it in the database (REST)
   const inputs = {
-    headline: req.body.headline,
+    title: req.body.title,
     featuredImage: `images/${req.file.filename}`,
     author: req.body.author,
     publishedDate: new Date(req.body.publishedDate),
-    content: req.body.content
+    topics: req.body.topics
   }
   await papersModel.create(inputs);
 
-  // Redirect user to the home page and provide the query parameters success and action
-  res.redirect("/?success=true&action=create");
+  res.redirect("/?success=true&action=create"); //Going back to the homepage
 });
 
-controller.get("/:id/edit", async (req, res) => {
+controller.get("/:id/edit", async (req, res) => { //Edit the paper (REST)
   const selectedPaper = await papersModel.findById(req.params.id);
   res.render('papers/edit.ejs', {
     paper: selectedPaper,
   });
 });
 
-controller.put("/:id", async (req, res) => {
+controller.put("/:id", async (req, res) => { //Updating the paper (REST)
   const inputs = {
     headline: req.body.headline,
     featuredImage: `images/${req.file.filename}`,
@@ -77,17 +50,15 @@ controller.put("/:id", async (req, res) => {
     _id: req.params.id,
   }, inputs);
 
-  // Redirect user to the single post page and provide the query parameters success and action
-  res.redirect(`/posts/${req.params.id}?success=true&action=update`);
+  res.redirect(`/papers/${req.params.id}?success=true&action=update`); //bring user to one paper
 });
 
-controller.delete("/:id", async (req, res) => {
+controller.delete("/:id", async (req, res) => { //deleting a paperr
   await papersModel.deleteOne({
     _id: req.params.id
   });
 
-  // Redirect user to home page with success and action query parameters
-  res.redirect("/?success=true&action=delete");
+  res.redirect("/?success=true&action=delete"); //back to homepage
 });
 
 module.exports = controller;

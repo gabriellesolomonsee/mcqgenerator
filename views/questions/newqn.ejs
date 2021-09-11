@@ -1,0 +1,42 @@
+<%- include("../partials/header.ejs") %>
+<div class="container">
+  <h2>Create a new question</h2>
+  <form method="POST" action="/questions" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="part1" class="form-label">Part 1 of the question:</label>
+      <input type="text" name="part1" class="form-control" />
+    </div>
+    <div class="mb-3">
+      <label for="questionImage" class="form-label">Image (optional):</label>
+      <input type="file" name="questionImage" class="form-control" accept="image/*"/>
+    </div>
+    <div class="mb-3">
+        <label for="part2" class="form-label">Part 2 of the question (optional):</label>
+        <input type="text" name="part2" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="optionA" class="form-label">A:</label>
+        <input type="text" name="optionA" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="optionB" class="form-label">B:</label>
+        <input type="text" name="optionB" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="optionC" class="form-label">C:</label>
+        <input type="text" name="optionC" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="optionD" class="form-label">D:</label>
+        <input type="text" name="optionD" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label for="answer" class="form-label">Correct answer:</label>
+        <input type="text" name="answer" class="form-control" />
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary mb-3" value="Create new question" />
+    </div>
+  </form>
+</div>
+<%- include("../partials/footer.ejs") %>

@@ -4,21 +4,18 @@
     <div class="row">
       <div class="col-8">
         <% if (mostRecentPaper) { %>
-          <div class="mb-3">
-            <img src="<%= mostRecentPaper.featuredImage %>" />
-          </div>
-          <h3><%= mostRecentPaper.headline %></h3>
+          <h3><%= mostRecentPaper.title %></h3>
           <h6>By: <%= mostRecentPaper.author %></h6>
           <h6>Published on: <%= mostRecentPaper.publishedDate %></h6>
-          <p><%= mostRecentPaper.content %></p>
+          <p><%= mostRecentPaper.topics %></p>
           <a href="/papers/<%= mostRecentPaper.id %>/edit" class="btn btn-primary">Edit paper</a>
         <% } %>
       </div>
       <div class="col-4">
         <h4>Other recent papers</h4>
         <ul>
-          <% for (let post of nextRecentPapers) { %>
-            <li><a href="/papers/<%= paper.id %>"><%= paper.headline %></a></li>
+          <% for (let paper of nextRecentPapers) { %>
+            <li><a href="/papers/<%= paper.id %>"><%= paper.title %></a></li>
           <% } %>
         </ul>
       </div>
