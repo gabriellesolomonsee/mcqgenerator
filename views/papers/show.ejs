@@ -4,10 +4,10 @@
   <h3><%= paper.assessment %></h3>
   <h6>By: <%= paper.author %></h6>
   <h6>Published on: <%= paper.publishedDate %></h6>
-  <p><%= paper.topics %></p>
-  <p><%= paper.mcqcomments %></p>
-  <p><%= paper.sqcomments %></p>
-  <p><%= paper.eqcomments %></p>
+  <p>Topics: <%= paper.topics %></p>
+  <p>Comments on multiple choice questions: <%= paper.mcqcomments %></p>
+  <p>Comments on structured questions: <%= paper.sqcomments %></p>
+  <p>Comments on extended answer questions: <%= paper.eqcomments %></p>
   <!-- Option to edit the paper info -->
   <a href="/papers/<%= paper.id %>/edit" class="btn btn-primary">Edit paper info</a>
   <!-- Option to add questions to the paper -->

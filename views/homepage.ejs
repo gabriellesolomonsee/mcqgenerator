@@ -7,10 +7,10 @@
           <h3><%= mostRecentPaper.assessment %></h3>
           <h6>By: <%= mostRecentPaper.author %></h6>
           <h6>Published on: <%= mostRecentPaper.publishedDate %></h6>
-          <p><%= mostRecentPaper.topics %></p>
-          <p><%= mostRecentPaper.mcqcomments %></p>
-          <p><%= mostRecentPaper.sqcomments %></p>
-          <p><%= mostRecentPaper.eqcomments %></p>
+          <p>Topics: <%= mostRecentPaper.topics %></p>
+          <p>Comments on multiple choice questions: <%= mostRecentPaper.mcqcomments %></p>
+          <p>Comments on structured questions: <%= mostRecentPaper.sqcomments %></p>
+          <p>Comments on extended andwer questions: <%= mostRecentPaper.eqcomments %></p>
           <a href="/papers/<%= mostRecentPaper.id %>/edit" class="btn btn-primary">Edit report</a>
         <% } %>
       </div>
