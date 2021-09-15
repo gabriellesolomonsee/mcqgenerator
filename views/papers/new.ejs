@@ -1,10 +1,10 @@
 <%- include("../partials/header.ejs") %>
 <div class="container">
-  <h2>Create a new paper</h2>
+  <h2>Create a new report</h2>
   <form method="POST" action="/papers">
     <div class="mb-3">
-      <label for="title" class="form-label">Title:</label>
-      <input type="text" name="title" class="form-control" />
+      <label for="assessment" class="form-label">Assessment:</label>
+      <input type="text" name="assessment" class="form-control" />
     </div>
     <div class="mb-3">
       <label for="author" class="form-label">Author:</label>
@@ -18,11 +18,21 @@
       <label for="topics" class="form-label">Topics tested:</label>
       <textarea name="topics" class="form-control"></textarea>
     </div>
+    <div class="mb-3">
+      <label for="mcqcomments" class="form-label">Comments for multiple choice questions:</label>
+      <textarea name="mcqcomments" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="sqcomments" class="form-label">Comments for structured questions:</label>
+      <textarea name="sqcomments" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="eqcomments" class="form-label">Comments for extended answer questions:</label>
+      <textarea name="eqcomments" class="form-control"></textarea>
+    </div>
     <div>
-      <input type="submit" class="btn btn-primary mb-3" value="Create new paper" />
+      <input type="submit" class="btn btn-primary mb-3" value="Create new report" />
     </div>
   </form>
 </div>
 <%- include("../partials/footer.ejs") %>
-
-<!-- Similar to the views/edit except no preexisting values-->

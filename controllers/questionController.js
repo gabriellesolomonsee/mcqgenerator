@@ -20,16 +20,6 @@ controller.get("/newqn", (req, res) => { //render the form for adding the new qu
   res.render("questions/newqn.ejs");
 });
 
-controller.get("/:id", async (req, res) => { //Show one question
-  const selectedQuestion = await questionsModel.findById(req.params.id);
-  const success = req.query.success;
-  const action = req.query.action;
-  res.render("questions/show1qn.ejs", {
-    question: selectedQuestion,
-    success,
-    action
-  });
-});
 
 controller.post("", async (req, res) => { //creating a new question and put it in the database
   // console.log(req.body)
@@ -47,12 +37,18 @@ controller.post("", async (req, res) => { //creating a new question and put it i
   res.redirect("/?success=true&action=create");
 });
 
+// back track, try to follow the logic, look at URL. Is the id matching any database? Is the content there?
 controller.get("/:id/editqn", async (req, res) => { //Form to edit the question
-  const selectedQuestion = await questionsModel.findById(req.params.id);
+  const selectedQuestion = await questionsModel.findById(req.params.id); //why is id empty. Go to MongoDB Atlas to check the ID.
+  const success = req.query.success;
+  const action = req.query.action;
   res.render('questions/editqn.ejs', {
-    question: selectedQuestion,
+    questions: selectedQuestion,
+    success,
+    action,
   });
 });
+
 
 controller.put("/questions/:id", async (req, res) => { //Updating the question
   const inputs = {

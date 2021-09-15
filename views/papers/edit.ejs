@@ -5,35 +5,42 @@
   <h2>Edit paper</h2>
   <form method="POST" action="/papers/<%= paper.id %>?_method=PUT">
     <div class="mb-3">
-      <!-- //to input the paper's title -->
-      <label for="title" class="form-label">Title:</label> <!-- //to input the paper's title -->
-      <input type="text" name="title" class="form-control" value="<%= paper.title %>" />
+      <label for="assessment" class="form-label">Assessment:</label> <!-- //to input the paper's title -->
+      <input type="text" name="assessment" class="form-control" value="<%= paper.assessment %>" />
     </div>
     <div class="mb-3">
-      <!-- //to input the paper's author -->
       <label for="author" class="form-label">Author:</label>
       <input type="text" name="author" class="form-control" value="<%= paper.author %>" />
     </div>
     <div class="mb-3">
-      <!-- //to input the date the paper is added -->
       <label for="publishedDate" class="form-label">Published Date:</label>
       <!-- Convert the publishedDate to the right format for the datetime-local input -->
       <input type="datetime-local" name="publishedDate" class="form-control" value="<%= paperISOString.substring(0, paperISOString.length - 1) %>" />
     </div>
     <div class="mb-3">
-      <!-- //to list all the topics tested -->
       <label for="topics" class="form-label">Topics tested:</label>
       <textarea name="topics" class="form-control"><%= paper.topics %></textarea>
     </div>
+    <div class="mb-3">
+      <label for="mcqcomments" class="form-label">Comments for multiple choice questions:</label>
+      <textarea name="mcqcomments" class="form-control"><%= paper.mcqcomments %></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="sqcomments" class="form-label">Comments for structured questions:</label>
+      <textarea name="sqcomments" class="form-control"><%= paper.sqcomments %></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="eqcomments" class="form-label">Comments for extended answer questions:</label>
+      <textarea name="eqcomments" class="form-control"><%= paper.eqcomments %></textarea>
+    </div>
     <div>
-      <!-- //button to submit the info -->
-      <input type="submit" class="btn btn-primary mb-3" value="Save paper"/>
+      <input type="submit" class="btn btn-primary mb-3" value="Save report"/>
     </div>
   </form>
   <form method="POST" action="/papers/<%= paper.id %>?_method=DELETE">
     <div>
       <!-- //button to delete the paper -->
-      <input type="submit" class="btn btn-danger mb-3" value="Delete paper" />
+      <input type="submit" class="btn btn-danger mb-3" value="Delete report" />
     </div>
   </form>
 </div>

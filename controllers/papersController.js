@@ -19,11 +19,15 @@ controller.get("/:id", async (req, res) => { //getting a single post (REST)
 });
 
 controller.post("/", async (req, res) => { //Creating a new paper and put it in the database (REST)
+  console.log(req.body)
   const inputs = {
-    title: req.body.title,
+    assessment: req.body.assessment,
     author: req.body.author,
     publishedDate: new Date(req.body.publishedDate),
-    topics: req.body.topics
+    topics: req.body.topics,
+    mcqcomments: req.body.mcqcomments,
+    sqcomments: req.body.sqcomments,
+    eqcomments: req.body.eqcomments,
   }
   await papersModel.create(inputs);
   res.redirect("/?success=true&action=create"); //Going back to the homepage
@@ -38,10 +42,13 @@ controller.get("/:id/edit", async (req, res) => { //Edit the paper (REST)
 
 controller.put("/:id", async (req, res) => { //Updating the paper (REST)
   const inputs = {
-    title: req.body.title,
+    assessment: req.body.assessment,
     author: req.body.author,
     publishedDate: new Date(req.body.publishedDate),
-    topics: req.body.topics
+    topics: req.body.topics,
+    mcqcomments: req.body.mcqcomments,
+    sqcomments: req.body.sqcomments,
+    eqcomments: req.body.eqcomments,
   }
   await papersModel.updateOne({
     _id: req.params.id,

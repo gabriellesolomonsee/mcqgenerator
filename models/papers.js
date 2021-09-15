@@ -3,10 +3,13 @@ const { Schema } = mongoose;
 
 const paperSchema = new Schema(
   {
-    title: { type: String, required: true },
+    assessment: { type: String, required: true },
     author: { type: String, required: true },
     publishedDate: { type: Date, default: new Date() },
-    topics: { type: String, required: true },  
+    topics: { type: String, required: true },
+    mcqcomments: { type: String, required: true },
+    sqcomments: { type: String, required: true },
+    eqcomments: { type: String, required: true },
   },
   {
     timestamps: true

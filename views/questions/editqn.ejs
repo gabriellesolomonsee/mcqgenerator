@@ -1,12 +1,11 @@
-<%- include("../partials/header.ejs") %>
+<!-- <%- include("../partials/header.ejs") %> -->
 
-<%- const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
   <h2>Edit question</h2>
-  <form method="POST" action="/questions/<%= questions.id %>?_method=PUT" enctype="multipart/form-data">
+  <form method="POST" action="/questions/<%= questions.id %>?_method=PUT">
     <div class="mb-3">
       <label for="part1" class="form-label">Part 1 of the question:</label>
-      <input type="text" name="part1" class="form-control" value="<%= question.part1 %>" />
+      <input type="text" name="part1" class="form-control" value="<%= questions.part1 %>" />
     </div>
     <div class="mb-3">
       <label for="questionImage" class="form-label">Image (optional)::</label>
@@ -14,27 +13,27 @@
     </div>
     <div class="mb-3">
         <label for="part2" class="form-label">Part 2 of the question (optional):</label>
-        <input type="text" name="part2" class="form-control" value="<%= question.part2 %>" />
+        <input type="text" name="part2" class="form-control" value="<%= questions.part2 %>" />
     </div>
     <div class="mb-3">
         <label for="optionA" class="form-label">A:</label>
-        <input type="text" name="optionA" class="form-control" value="<%= question.optionA %>" />
+        <input type="text" name="optionA" class="form-control" value="<%= questions.optionA %>" />
     </div>
     <div class="mb-3">
         <label for="optionB" class="form-label">B:</label>
-        <input type="text" name="optionB" class="form-control" value="<%= question.optionB %>" />
+        <input type="text" name="optionB" class="form-control" value="<%= questions.optionB %>" />
     </div>
     <div class="mb-3">
         <label for="optionC" class="form-label">C:</label>
-        <input type="text" name="optionC" class="form-control" value="<%= question.optionC %>" />
+        <input type="text" name="optionC" class="form-control" value="<%= questions.optionC %>" />
     </div>
     <div class="mb-3">
         <label for="optionD" class="form-label">D:</label>
-        <input type="text" name="optionD" class="form-control" value="<%= question.optionD %>" />
+        <input type="text" name="optionD" class="form-control" value="<%= questions.optionD %>" />
     </div>
     <div class="mb-3">
         <label for="answer" class="form-label">Correct answer:</label>
-        <input type="text" name="answer" class="form-control" value="<%= question.answer %>" />
+        <input type="text" name="answer" class="form-control" value="<%= questions.answer %>" />
     </div>
     <div>
       <input type="submit" class="btn btn-primary mb-3" value="Save question" />
