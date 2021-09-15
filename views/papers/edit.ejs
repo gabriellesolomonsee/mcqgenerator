@@ -2,7 +2,7 @@
 
 <% const paperISOString = new Date(paper.publishedDate).toISOString() %>
 <div class="container">
-  <h2>Edit paper</h2>
+  <h2>Edit report</h2>
   <form method="POST" action="/papers/<%= paper.id %>?_method=PUT">
     <div class="mb-3">
       <label for="assessment" class="form-label">Assessment:</label> <!-- //to input the paper's title -->

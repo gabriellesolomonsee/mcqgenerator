@@ -7,7 +7,7 @@ const methodOverride = require('method-override'); //Lets you use HTTP verbs suc
 const homepageController = require("./controllers/homepageController");
 const papersController = require("./controllers/papersController");
 const testingController = require("./controllers/testingController");
-const questionController = require("./controllers/questionController");
+
 
 require('dotenv').config()
 
@@ -46,7 +46,6 @@ app.use(express.urlencoded({ extended: true })) //Returns middleware that only p
 app.use(methodOverride("_method"));
 
 app.use("/", homepageController);
-app.use("/questions", questionController);
 app.use("/papers", papersController);
 app.use("/testing", testingController);
 
